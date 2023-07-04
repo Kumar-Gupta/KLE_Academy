@@ -9,7 +9,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 app.get("/",function(req,res){
-    res.sendFile(__dirname+ "/science.html");
+    res.sendFile(__dirname+ "/index.html");
 });
 
 app.post("/",function(req,res){
@@ -36,7 +36,14 @@ app.post("/",function(req,res){
         from:"Kumargupta24102000@gmail.com",
         to: eMail,
         subject: "resigtration successful",
-        text: "Hello " + name + " your registration is successful for the course " + course + " in " + city + " city of " + state + " state. We will contact you soon on " + phone + " for further details."
+        text:"New Registration\n\n" +
+        "Name: " + name + "\n" +
+        "Course: " + course + "\n" +
+        "City: " + city + "\n" +
+        "District: " + district + "\n" +
+        "State: " + state + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + eMail + "."
     };
 
     transporter.sendMail(mailOptions, function(error,info){
